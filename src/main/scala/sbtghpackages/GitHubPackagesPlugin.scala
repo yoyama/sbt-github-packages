@@ -124,6 +124,9 @@ object GitHubPackagesPlugin extends AutoPlugin {
 
       case TokenSource.GitConfig(key) =>
         Try(s"git config $key".!!).map(_.trim).toOption
+
+      case TokenSource.None() =>
+        Option("NOTOKEN")
     }
   }
 
